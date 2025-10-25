@@ -6,6 +6,7 @@ export const fetchPosts = createAsyncThunk("lorem/fetchPosts", async () => {
     "https://jsonplaceholder.typicode.com/posts?_limit=5"
   );
   const data = await response.json();
+  await new Promise((resolve) => setTimeout(resolve, 1000)); 
   return data;
 });
 
@@ -13,7 +14,7 @@ const loremSlice = createSlice({
   name: "lorem",
   initialState: {
     posts: [],
-    loading: false,
+    loading: true,
     error: null,
   },
   reducers: {},

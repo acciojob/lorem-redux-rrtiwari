@@ -15,7 +15,7 @@ const App = () => {
     <div className="app-container">
       <h1>A short Naration of Lorem Ipsum</h1>
       <p>
-        Below Contains A title and Body gotten from a random API, Please take
+        Below Contains A title and Body gotten froma random API, Please take
         your time to Review
       </p>
       {loading ? (
@@ -24,8 +24,8 @@ const App = () => {
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
-              <h4 className="title">Title : {post.title}</h4>
-              <p className="body">Body : {post.body}</p>
+              <h4 className="title">Title :{post.title}</h4>
+              <p className="body">Body :{post.body}</p>
             </li>
           ))}
         </ul>
@@ -35,4 +35,3 @@ const App = () => {
 };
 
 export default App;
-

@@ -1,20 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import "regenerator-runtime/runtime";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchLorem = createAsyncThunk("lorem/fetchLorem", async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  if (!response.ok) {
-    throw new Error("Failed to fetch posts");
-  }
-  const data = await response.json();
-  return data;
+  const response = await axios.get(
+    "https://jsonplaceholder.typicode.com/posts"
+  );
+  return response.data.slice(0, 5);
 });
 
 const loremSlice = createSlice({
   name: "lorem",
   initialState: {
     content: [],
-    loading: false,
+    loading: true,
     error: null,
   },
   reducers: {},
@@ -22,14 +21,15 @@ const loremSlice = createSlice({
     builder
       .addCase(fetchLorem.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(fetchLorem.fulfilled, (state, action) => {
         state.loading = false;
         state.content = action.payload;
       })
-      .addCase(fetchLorem.rejected, (state, action) => {
+      .addCase(fetchLorem.rejected, (state) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = "Failed to fetch data";
       });
   },
 });

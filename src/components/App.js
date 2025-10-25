@@ -1,24 +1,31 @@
 import "./../styles/App.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "./LoremSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   const { posts, loading } = useSelector((state) => state.lorem);
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+      dispatch(fetchPosts());
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [dispatch]);
 
   return (
     <div className="app-container">
       <h1>A short Naration of Lorem Ipsum</h1>
-      <p>
-        Below Contains A title and Body gotten froma random API, Please take
-        your time to Review
-      </p>
-      {loading ? (
+
+      {showIntro ? (
+        <p>
+          Below Contains A title and Body gotten froma random API, Please take
+          your time to Review
+        </p>
+      ) : loading ? (
         <h4>Loading...</h4>
       ) : (
         <ul>

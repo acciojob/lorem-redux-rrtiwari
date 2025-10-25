@@ -13,7 +13,10 @@ const App = () => {
 
   return (
     <div>
-      <h1>A short Naration of Lorem Ipsum</h1>
+      <h1>
+        Below Contains A title and Body gotten from a random API, Please take
+        your time to Review
+      </h1>
 
       {loading && <h4>Loading...</h4>}
       {error && <h4>{error}</h4>}
@@ -21,7 +24,7 @@ const App = () => {
       <ul>
         {content.map((post) => (
           <li key={post.id}>
-            <h4>{post.title}</h4>
+            <h4 className="title">{post.title}</h4>
             <p>{post.body}</p>
           </li>
         ))}

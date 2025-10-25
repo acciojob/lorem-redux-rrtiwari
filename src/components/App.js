@@ -19,7 +19,7 @@ const App = () => {
       <ul>
         {content.map((post) => (
           <li key={post.id}>
-            <h4 className="title">Title :Below Contains A title and Body gotten froma random API, Please take your time to Review</h4>
+            <h4 className="title">Title :sunt aut facere repellat provident occaecati excepturi optio reprehenderit</h4>
             <p className="body">{post.body}</p>
           </li>
         ))}

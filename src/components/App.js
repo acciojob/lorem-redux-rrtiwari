@@ -13,15 +13,15 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1>A short Naration of Lorem Ipsum</h1>
+      <h4>A short Naration of Lorem Ipsum</h4>
       {loading ? (
         <h4>Loading...</h4>
       ) : (
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
-              <p className="title">Title: {post.title}</p>
-              <p className="body">Body: {post.body}</p>
+              <p className="title">Title :{post.title}</p>
+              <p className="body">Body :{post.body}</p>
             </li>
           ))}
         </ul>
